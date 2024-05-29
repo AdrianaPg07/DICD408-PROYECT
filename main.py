@@ -254,7 +254,7 @@ def etl_pipeline():
         artist_df.to_csv('artist_df.csv', index = False)
         # ETL Load to SQL
         # Ensure the database is created before loading data (somee.com)
-        #load_data_to_database(user_df, playlist_df, track_df, album_df, artist_df, db_path)
+        load_data_to_database(user_df, playlist_df, track_df, album_df, artist_df, db_path)
 
         logging.info("Data loaded to SQLite successfully.")
     except EnvironmentError as e:
