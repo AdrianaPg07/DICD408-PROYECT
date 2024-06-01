@@ -85,6 +85,7 @@ def extract_spotify_data(client_id, client_secret, user_id):
         logging.info("No playlists found.")
 
     return user_data, playlist_data, track_data, album_data, artist_data
+#TRANSFORM
 
 def transform_data(track_data, artist_data, album_data, playlist_data, user_data):
     track_df = pd.DataFrame(track_data).rename(
@@ -107,7 +108,7 @@ def check_duplicates_and_missing_values(track_df, artist_df, album_df, playlist_
 
         if df.isnull().values.any():
             logging.warning(f"Missing values found in {name} data. Please handle missing values appropriately.")
-
+#LOAD
 def load_data_to_database(user_df, playlist_df, track_df, album_df, artist_df, db_path):
     try:
         conn = pyodbc.connect(db_path)
